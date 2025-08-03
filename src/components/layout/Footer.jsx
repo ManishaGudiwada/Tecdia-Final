@@ -11,9 +11,11 @@ const Footer = () => {
           {/* Company Info */}
           <div className="col-span-1 md:col-span-2">
             <div className="flex items-center space-x-2 mb-4">
-              <div className="w-8 h-8 bg-tecdia-blue rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-sm">T</span>
-              </div>
+              <img
+              src="/tecdia logo.jpg" 
+              alt="logo"
+              className="w-10 h-10 rounded-lg object-cover" 
+              />
               <span className="text-xl font-poppins font-bold">
                 Tecdia Global
               </span>
@@ -25,7 +27,7 @@ const Footer = () => {
             </p>
             <div className="flex space-x-4">
               <motion.a
-                href="#"
+                href="https://twitter.com/kaika_tecdia"
                 whileHover={{ scale: 1.1 }}
                 className="text-tecdia-gray-400 hover:text-white transition-colors"
               >
@@ -38,7 +40,7 @@ const Footer = () => {
                 </svg>
               </motion.a>
               <motion.a
-                href="#"
+                href="https://www.linkedin.com/company/tecdia-jp"
                 whileHover={{ scale: 1.1 }}
                 className="text-tecdia-gray-400 hover:text-white transition-colors"
               >

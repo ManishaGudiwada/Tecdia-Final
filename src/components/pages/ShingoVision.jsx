@@ -32,7 +32,7 @@ const ShingoVision = () => {
         {/* Background Image */}
         <div className="absolute inset-0">
           <img
-            src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1920&h=1080&fit=crop"
+            src="image -8.png"
             alt="Shingo Koyama"
             className="w-full h-full object-cover opacity-50"
           />
@@ -165,58 +165,53 @@ const ShingoVision = () => {
         </div>
       </section>
 
-      {/* Vision Statements */}
-      <section className="py-20 bg-white relative">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl md:text-6xl font-poppins font-bold text-tecdia-gray-900 mb-4">
-              {language === 'EN' ? "Our Vision" : "私たちのビジョン"}
-            </h2>
-          </motion.div>
+     {/* Vision Statements - Horizontal Scrollable Cards */}
+<section className="py-20 bg-white relative overflow-x-auto">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <motion.div
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      viewport={{ once: true }}
+      className="text-center mb-16"
+    >
+      <h2 className="text-4xl md:text-6xl font-poppins font-bold text-tecdia-gray-900 mb-4">
+        {language === 'EN' ? "Our Vision" : "私たちのビジョン"}
+      </h2>
+    </motion.div>
 
-          <div className="space-y-12">
-            {quotes[language].slice(1).map((quote, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, x: index % 2 === 0 ? -60 : 60 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                whileHover={{ 
-                  y: -4,
-                  boxShadow: "0 20px 40px rgba(0, 84, 166, 0.08)",
-                }}
-                className="group"
-              >
-                <div className="bg-gradient-to-br from-tecdia-gray-50 to-white rounded-3xl p-10 shadow-lg border border-tecdia-gray-100">
-                  <motion.div
-                    className="text-tecdia-orange text-3xl mb-6"
-                    animate={{
-                      scale: [1, 1.05, 1],
-                    }}
-                    transition={{
-                      duration: 2,
-                      repeat: Infinity,
-                      ease: "easeInOut",
-                    }}
-                  >
-                    ●
-                  </motion.div>
-                  <p className="text-xl md:text-2xl text-tecdia-gray-700 leading-relaxed font-inter">
-                    {quote}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
+    <div className="flex space-x-8 overflow-x-auto pb-4 snap-x snap-mandatory">
+      {quotes[language].slice(1).map((quote, index) => (
+        <motion.div
+          key={index}
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: index * 0.1 }}
+          viewport={{ once: true }}
+          whileHover={{ 
+            y: -4,
+            boxShadow: "0 20px 40px rgba(0, 84, 166, 0.08)",
+          }}
+          className="snap-center min-w-[320px] sm:min-w-[400px] lg:min-w-[500px] bg-gradient-to-br from-tecdia-gray-50 to-white rounded-3xl shadow-lg border border-tecdia-gray-100 p-6"
+        >
+          <img
+            src={`/shingo${index + 1}.jpeg`}// Replace with actual image paths like vision1.png etc.
+            alt={`Vision ${index + 1}`}
+            className="w-full h-52 object-cover rounded-xl mb-6"
+          />
+          <div className="text-tecdia-orange text-3xl mb-4">●</div>
+          <p className="text-lg text-tecdia-gray-700 leading-relaxed font-inter">
+            {quote}
+          </p>
+          <div className="mt-6 text-right text-sm text-gray-500">
+            — Shingo Koyama
           </div>
-        </div>
-      </section>
+        </motion.div>
+      ))}
+    </div>
+  </div>
+</section>
+
 
       {/* President Signature */}
       <section className="py-20 bg-gradient-to-r from-tecdia-blue to-blue-700 text-white">

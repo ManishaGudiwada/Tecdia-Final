@@ -24,29 +24,32 @@ const Contact = () => {
     {
       country: 'India',
       city: 'Bangalore',
-      address: 'Tecdia India Pvt. Ltd.\nBanglore\n[Insert Address]',
-      phone: '+91-XXXXXXXXXX',
-      email: 'recruit@tecdia.com',
+      address: '#303/-2, 5 A Cross,HRBR Layout 3rd Block, Kalyan Nagar,\nBangalore, 560 043',
+      phone: '+91-80-2542 9452',
+      email: 'support@iconelectromatic.com',
       image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=400&h=300&fit=crop',
-      description: 'Our technology and R&D center in India'
+      URL : 'http://www.iconelectromatic.com',
+      description: 'Icon Electromatic Private Limited'
     },
     {
       country: 'Japan',
       city: 'Tokyo',
-      address: 'Tecdia Co. Ltd.\nTokyo Headquarters\n[Insert Address]',
-      phone: '+81-XX-XXXX-XXXX',
-      email: 'info@tecdia.com',
-      image: 'https://images.unsplash.com/photo-1513828583688-c52646db42da?w=400&h=300&fit=crop',
-      description: 'Our headquarters and innovation hub'
+      address: '〒108-0023\n17F, SHIBAURA SQUARE BUILDING, 4-9-25 Shibaura, Minato-ku,.\n Tokyo, 108-0023, Japan',
+      phone: '+81-3-5765-5400',
+      email: 'sales@tecdla.co.jp',
+      url: 'https://www.tecdia.com',
+      image: 'image -6.jpg',
+      description: 'Tecdia Co. Ltd.'
     },
     {
       country: 'USA',
       city: 'Silicon Valley',
-      address: 'Tecdia USA\nSilicon Valley Office\n[Insert Address]',
-      phone: '+1-XXX-XXX-XXXX',
-      email: 'us@tecdia.com',
-      image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop',
-      description: 'Our technology hub in the heart of innovation'
+      address: '490 Jarvis Drive, Suite 12B-1, Morgan Hill, CA, 95037, U.S.A.',
+      phone: '+1-408-748-0100',
+      email: 'sales@tecdia.com',
+      URL : 'https://us.tecdia.com/contact/',
+      image: 'silicon.png',
+      description: 'TECDIA INC.'
     }
   ];
 
@@ -379,21 +382,21 @@ const Contact = () => {
                    <FaLinkedin className="w-5 h-5 text-blue-600 mr-2" />
                   <div>
                     <h4 className="font-semibold">LinkedIn</h4>
-                    <p className="text-sm opacity-90">[LinkedIn Profile Link]</p>
+                    <p className="text-sm opacity-90">[https://www.linkedin.com/company/tecdia-jp]</p>
                   </div>
                 </div>
                 <div className="flex items-center space-x-4">
                   <FaTwitter className="w-5 h-5 text-sky-500 mr-2" />
                   <div>
                     <h4 className="font-semibold">Twitter</h4>
-                    <p className="text-sm opacity-90">@TecdiaGlobal</p>
+                    <p className="text-sm opacity-90">@kaika_tecdia</p>
                   </div>
                 </div>
                 <div className="flex items-center space-x-4">
                   <FaInstagram className="w-5 h-5 text-pink-600 mr-2" />
                   <div>
                     <h4 className="font-semibold">Instagram</h4>
-                    <p className="text-sm opacity-90">@tecdiaglobal</p>
+                    <p className="text-sm opacity-90">@tecdia_recruit</p>
                   </div>
                 </div>
               </div>
@@ -408,13 +411,17 @@ const Contact = () => {
               className="bg-gradient-to-br from-tecdia-blue to-blue-600 rounded-3xl p-8 text-white"
             >
               <h3 className="text-2xl font-poppins font-bold text-tecdia-white-900 mb-6">Location</h3>
-              <div className="aspect-video bg-tecdia-gray-300 rounded-2xl flex items-center justify-center">
-                <div className="text-center">
-                  <div className="text-4xl mb-4">🗺️</div>
-                  <p className="text-tecdia-gray-600 font-medium">Google Maps Integration</p>
-                  <p className="text-sm text-tecdia-gray-500 mt-2">[Embedded Google Map Placeholder]</p>
-                </div>
-              </div>
+              <div className="aspect-video rounded-2xl overflow-hidden">
+  <iframe
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15548.609078719132!2d77.6172232163796!3d13.025973653468379!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae173cb275e5d9%3A0x2181829357226c8!2s303%2C%205th%20A%20Cross%20Rd%2C%20HRBR%20Layout%203rd%20Block%2C%20HRBR%20Layout%2C%20Kalyan%20Nagar%2C%20Bengaluru%2C%20Karnataka%20560043!5e0!3m2!1sen!2sin!4v1754244822167!5m2!1sen!2sin"
+    width="100%"
+    height="100%"
+    style={{ border: 0 }}
+    allowFullScreen=""
+    loading="lazy"
+    referrerPolicy="no-referrer-when-downgrade"
+  ></iframe>
+</div>
             </motion.div>
           </div>
         </div>

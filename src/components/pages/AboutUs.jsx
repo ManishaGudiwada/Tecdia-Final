@@ -17,19 +17,19 @@ const AboutUs = () => {
     {
       title: t('about.products.ceramics.title'),
       description: t('about.products.ceramics.description'),
-      image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400&h=300&fit=crop',
+      image: 'manufacturing.png',
       learnMore: '#'
     },
     {
       title: t('about.products.laser.title'),
       description: t('about.products.laser.description'),
-      image: 'https://images.unsplash.com/photo-1513828583688-c52646db42da?w=400&h=300&fit=crop',
+      image: 'laser.jpg',
       learnMore: '#'
     },
     {
       title: t('about.products.manufacturing.title'),
       description: t('about.products.manufacturing.description'),
-      image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=400&h=300&fit=crop',
+      image: 'ceramic.png',
       learnMore: '#'
     }
   ];
@@ -137,7 +137,7 @@ const AboutUs = () => {
               className="relative"
             >
               <img
-                src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&h=400&fit=crop"
+                src="1975.png"
                 alt="Tecdia Global Operations"
                 className="rounded-3xl shadow-2xl"
               />
