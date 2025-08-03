@@ -98,31 +98,13 @@ const Header = () => {
           </nav>
 
           <div className="flex items-center space-x-4 flex-shrink-0 ml-auto mr-0 pl-8">
-
             <div
               id="google_translate_element"
               className="hidden md:block"
               style={{ minWidth: '130px' }}
             ></div>
 
-            <div className="hidden md:flex items-center space-x-3">
-              {['EN', 'JP', 'CN'].map((lang) => (
-                <motion.button
-                  key={lang}
-                  onClick={() => changeLanguage(lang)}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  transition={{ duration: 0.1 }}
-                  className={`px-3 py-1 rounded-lg text-sm font-medium transition-all duration-150 ${
-                    language === lang
-                      ? 'bg-tecdia-blue text-white shadow-md'
-                      : 'bg-tecdia-gray-100 text-tecdia-gray-700 hover:bg-tecdia-gray-200'
-                  }`}
-                >
-                  {lang}
-                </motion.button>
-              ))}
-            </div>
+            {/* Removed Language Switch Buttons */}
 
             <Link to="/apply" className="ml-6">
               <motion.button
@@ -189,6 +171,6 @@ const Header = () => {
     </header>
   );
 };
-
 export default Header;
+
 
