@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useLanguage } from '../../contexts/LanguageContext';
@@ -28,8 +28,31 @@ const Header = () => {
     return location.pathname.startsWith(path);
   };
 
+  useEffect(() => {
+    if (!document.getElementById('google-translate-script')) {
+      const script = document.createElement('script');
+      script.id = 'google-translate-script';
+      script.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+      document.body.appendChild(script);
+    }
+
+    window.googleTranslateElementInit = () => {
+      const container = document.getElementById('google_translate_element');
+      if (container && container.childNodes.length === 0) {
+        new window.google.translate.TranslateElement(
+          {
+            pageLanguage: 'en',
+            includedLanguages: 'ja,en,zh-CN,zh-TW,hi,fil',
+            layout: window.google.translate.TranslateElement.InlineLayout.SIMPLE,
+          },
+          'google_translate_element'
+        );
+      }
+    };
+  }, []);
+
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-tecdia-gray-200">
+    <header className="mt-10 bg-white/95 backdrop-blur-md border-b border-tecdia-gray-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center h-16">
           {/* Logo */}
@@ -37,16 +60,19 @@ const Header = () => {
             <motion.div
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.15 }}
-              className="w-10 h-10 bg-gradient-to-br from-tecdia-blue to-blue-600 rounded-xl flex items-center justify-center"
+              className="w-10 h-10 rounded-xl overflow-hidden flex items-center justify-center"
             >
-              <span className="text-white font-bold text-lg">T</span>
+              <img
+                src="tecdia logo.jpg"
+                alt="Logo"
+                className="w-full h-full object-cover"
+              />
             </motion.div>
             <span className="text-xl font-poppins font-bold text-tecdia-gray-900">
-              Tecdia
+              TECINDIA
             </span>
           </Link>
 
-          {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-4 lg:space-x-6 xl:space-x-8 ml-8 flex-1 justify-center">
             {navigation.map((item) => (
               <Link
@@ -64,17 +90,22 @@ const Header = () => {
                     layoutId="activeTab"
                     className="absolute inset-0 bg-tecdia-blue/10 rounded-md"
                     initial={false}
-                    transition={{ type: "spring", stiffness: 800, damping: 40 }}
+                    transition={{ type: 'spring', stiffness: 800, damping: 40 }}
                   />
                 )}
               </Link>
             ))}
           </nav>
 
-          {/* Language Toggle and CTA */}
           <div className="flex items-center space-x-4 flex-shrink-0 ml-auto mr-0 pl-8">
-            {/* Language Toggle */}
-            <div className="flex items-center space-x-3">
+
+            <div
+              id="google_translate_element"
+              className="hidden md:block"
+              style={{ minWidth: '130px' }}
+            ></div>
+
+            <div className="hidden md:flex items-center space-x-3">
               {['EN', 'JP', 'CN'].map((lang) => (
                 <motion.button
                   key={lang}
@@ -93,13 +124,9 @@ const Header = () => {
               ))}
             </div>
 
-            {/* Apply Now Button */}
             <Link to="/apply" className="ml-6">
               <motion.button
-                whileHover={{ 
-                  scale: 1.02,
-                  boxShadow: "0 4px 12px rgba(255, 107, 0, 0.3)",
-                }}
+                whileHover={{ scale: 1.02, boxShadow: '0 4px 12px rgba(255, 107, 0, 0.3)' }}
                 whileTap={{ scale: 0.98 }}
                 transition={{ duration: 0.1 }}
                 className="hidden sm:inline-flex items-center px-4 py-2 bg-tecdia-orange text-white text-sm font-semibold rounded-lg hover:bg-orange-600 transition-all duration-150 shadow-md"
@@ -108,38 +135,21 @@ const Header = () => {
               </motion.button>
             </Link>
 
-            {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="md:hidden p-2 rounded-md text-tecdia-gray-700 hover:text-tecdia-blue hover:bg-tecdia-gray-100 transition-colors duration-150"
             >
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 {isMenuOpen ? (
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M6 18L18 6M6 6l12 12"
-                  />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 ) : (
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M4 6h16M4 12h16M4 18h16"
-                  />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
                 )}
               </svg>
             </button>
           </div>
         </div>
 
-        {/* Mobile Menu */}
         {isMenuOpen && (
           <motion.div
             initial={{ opacity: 0, y: -20 }}
@@ -181,3 +191,4 @@ const Header = () => {
 };
 
 export default Header;
+
