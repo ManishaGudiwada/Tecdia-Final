@@ -1,8 +1,8 @@
-import { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import { useLanguage } from '../../contexts/LanguageContext';
-import { useTranslation } from '../../hooks/useTranslation';
+import { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { motion } from "framer-motion";
+import { useLanguage } from "../../contexts/LanguageContext";
+import { useTranslation } from "../../hooks/useTranslation";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -11,39 +11,67 @@ const Header = () => {
   const location = useLocation();
 
   const navigation = [
-    { name: t('nav.home'), href: '/' },
-    { name: t('nav.about'), href: '/about' },
-    { name: t('nav.president'), href: '/shingo-vision' },
-    { name: t('nav.culture'), href: '/culture' },
-    { name: t('nav.careers'), href: '/careers' },
-    { name: t('nav.process'), href: '/recruitment-process' },
-    { name: t('nav.globalTeam'), href: '/global-team' },
-    { name: t('nav.contact'), href: '/contact' },
+    { name: t("nav.home"), href: "/" },
+    { name: t("nav.about"), href: "/about" },
+    { name: t("nav.president"), href: "/shingo-vision" },
+    { name: t("nav.culture"), href: "/culture" },
+    { name: t("nav.careers"), href: "/careers" },
+    { name: t("nav.process"), href: "/recruitment-process" },
+    { name: t("nav.globalTeam"), href: "/global-team" },
+    { name: t("nav.contact"), href: "/contact" },
   ];
 
   const isActive = (path) => {
-    if (path === '/') {
-      return location.pathname === '/';
+    if (path === "/") {
+      return location.pathname === "/";
     }
     return location.pathname.startsWith(path);
   };
 
+  // --- GOOGLE TRANSLATE WIDGET SETUP ---
+  useEffect(() => {
+    if (!document.getElementById("google-translate-script")) {
+      const script = document.createElement("script");
+      script.id = "google-translate-script";
+      script.src =
+        "https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
+      document.body.appendChild(script);
+    }
+
+    window.googleTranslateElementInit = () => {
+      const container = document.getElementById("google_translate_element");
+      if (container && container.childNodes.length === 0) {
+        new google.translate.TranslateElement(
+          {
+            pageLanguage: "en",
+            includedLanguages: "ja,en,zh-CN,zh-TW,hi,fil",
+            layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+          },
+          "google_translate_element"
+        );
+      }
+    };
+  }, []);
+
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-tecdia-gray-200">
+    <header className="fixed top-10 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-tecdia-gray-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center h-16">
-          {/* Logo */}
-         <Link to="/" className="flex items-center space-x-2 flex-shrink-0 ml-0">
-         <motion.img
-         whileHover={{ scale: 1.05 }}
-         transition={{ duration: 0.15 }}
-         src="/tecdia logo.jpg"
-         alt="TECINDIA Logo"
-         className="w-10 h-10 rounded-xl object-cover"
-         />
-         <span className="text-xl font-poppins font-bold text-tecdia-gray-900">
-          TECINDIA
-          </span>
+          {/* Logo with TECINDIA */}
+          <Link
+            to="/"
+            className="flex items-center space-x-2 flex-shrink-0 ml-0"
+          >
+            <motion.img
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.15 }}
+              src="/tecdia logo.jpg"
+              alt="TECINDIA Logo"
+              className="w-10 h-10 rounded-xl object-cover"
+            />
+            <span className="text-xl font-poppins font-bold text-tecdia-gray-900">
+              TECINDIA
+            </span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -54,8 +82,8 @@ const Header = () => {
                 to={item.href}
                 className={`relative px-2 lg:px-3 py-2 text-sm font-medium rounded-md transition-colors duration-150 whitespace-nowrap ${
                   isActive(item.href)
-                    ? 'text-tecdia-blue bg-tecdia-blue/10'
-                    : 'text-tecdia-gray-700 hover:text-tecdia-blue hover:bg-tecdia-gray-50'
+                    ? "text-tecdia-blue bg-tecdia-blue/10"
+                    : "text-tecdia-gray-700 hover:text-tecdia-blue hover:bg-tecdia-gray-50"
                 }`}
               >
                 {item.name}
@@ -71,32 +99,19 @@ const Header = () => {
             ))}
           </nav>
 
-          {/* Language Toggle and CTA */}
+          {/* Language + CTA */}
           <div className="flex items-center space-x-4 flex-shrink-0 ml-auto mr-0 pl-8">
-            {/* Language Toggle */}
-            <div className="flex items-center space-x-3">
-              {['EN', 'JP', 'CN'].map((lang) => (
-                <motion.button
-                  key={lang}
-                  onClick={() => changeLanguage(lang)}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  transition={{ duration: 0.1 }}
-                  className={`px-3 py-1 rounded-lg text-sm font-medium transition-all duration-150 ${
-                    language === lang
-                      ? 'bg-tecdia-blue text-white shadow-md'
-                      : 'bg-tecdia-gray-100 text-tecdia-gray-700 hover:bg-tecdia-gray-200'
-                  }`}
-                >
-                  {lang}
-                </motion.button>
-              ))}
-            </div>
+            {/* Google Translate */}
+            <div
+              id="google_translate_element"
+              className="hidden md:block"
+              style={{ minWidth: "130px" }}
+            ></div>
 
-            {/* Apply Now Button */}
+            {/* Apply Now */}
             <Link to="/apply" className="ml-6">
               <motion.button
-                whileHover={{ 
+                whileHover={{
                   scale: 1.02,
                   boxShadow: "0 4px 12px rgba(255, 107, 0, 0.3)",
                 }}
@@ -104,11 +119,11 @@ const Header = () => {
                 transition={{ duration: 0.1 }}
                 className="hidden sm:inline-flex items-center px-4 py-2 bg-tecdia-orange text-white text-sm font-semibold rounded-lg hover:bg-orange-600 transition-all duration-150 shadow-md"
               >
-                {t('nav.applyNow')}
+                {t("nav.applyNow")}
               </motion.button>
             </Link>
 
-            {/* Mobile Menu Button */}
+            {/* Mobile Menu Toggle */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="md:hidden p-2 rounded-md text-tecdia-gray-700 hover:text-tecdia-blue hover:bg-tecdia-gray-100 transition-colors duration-150"
@@ -156,8 +171,8 @@ const Header = () => {
                   onClick={() => setIsMenuOpen(false)}
                   className={`block px-3 py-2 rounded-md text-base font-medium transition-colors duration-150 ${
                     isActive(item.href)
-                      ? 'text-tecdia-blue bg-tecdia-blue/10'
-                      : 'text-tecdia-gray-700 hover:text-tecdia-blue hover:bg-tecdia-gray-50'
+                      ? "text-tecdia-blue bg-tecdia-blue/10"
+                      : "text-tecdia-gray-700 hover:text-tecdia-blue hover:bg-tecdia-gray-50"
                   }`}
                 >
                   {item.name}
@@ -169,7 +184,7 @@ const Header = () => {
                   onClick={() => setIsMenuOpen(false)}
                   className="block w-full text-center px-4 py-2 bg-tecdia-orange text-white text-sm font-semibold rounded-lg hover:bg-orange-600 transition-colors duration-150"
                 >
-                  {t('nav.applyNow')}
+                  {t("nav.applyNow")}
                 </Link>
               </div>
             </div>
