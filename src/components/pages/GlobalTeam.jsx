@@ -104,32 +104,32 @@ const GlobalTeam = () => {
 
   const teamStories = [
     {
-      name: 'Yuki Tanaka',
-      role: 'R&D Engineer',
+      name: 'Kana Amaya',
+      role: 'Sales Office Manager',
       location: 'Tokyo, Japan',
-      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=face',
-      story: '"Working at Tecdia has allowed me to work on cutting-edge technologies while being part of a truly global team. The collaborative environment here is unmatched."',
+      image: 'https://media.licdn.com/dms/image/v2/D5603AQEZBagW4454LQ/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1711679433436?e=1756944000&v=beta&t=0DtMYQfMEL7ehyCKcetyEyWQCEdxTKBGNKvYq_ErQzI',
+      story: "Tecdia is a globally-minded company that nurtures diverse talent, encourages cross-department collaboration, and empowers employees to explore bold new challenges across industries and borders.",
     },
     {
-      name: 'Sarah Chen',
-      role: 'Product Manager',
-      location: 'Silicon Valley, USA',
-      image: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=200&h=200&fit=crop&crop=face',
-      story: '"The diversity of perspectives at Tecdia is incredible. Every day I learn something new from colleagues around the world."',
-    },
-    {
-      name: 'Rajesh Kumar',
-      role: 'Software Developer',
-      location: 'Bangalore, India',
-      image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop&crop=face',
-      story: '"Tecdia\'s commitment to innovation and global collaboration has given me opportunities I never thought possible."',
-    },
-    {
-      name: 'Maria Santos',
-      role: 'Quality Control Specialist',
+      name: 'Bibian Suzuki',
+      role: 'Finance Department - Accounting Group',
       location: 'Cebu, Philippines',
-      image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&h=200&fit=crop&crop=face',
-      story: '"Being part of Tecdia\'s manufacturing excellence team has taught me the importance of precision and quality in everything we do."',
+      image: '/bibian_san_img.jpeg',
+      story: "I like to bring cross-border leadership experience from Cebu to HQ, shaping finance with precision and care.",
+    },
+    {
+      name: 'Ganesh Adhikari',
+      role: 'ERP Application Developer',
+      location: 'Tokyo, Japan',
+      image: 'https://media.licdn.com/dms/image/v2/D5603AQGzb-OoxOYY5A/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1727520639663?e=1756944000&v=beta&t=Hxw712E4fYR4lGn72T19j1V9uY6N2SrGGo30aIxGoKM',
+      story: "Tecdia\'s commitment to innovation and global collaboration has given me opportunities I never thought possible.",
+    },
+    {
+      name: 'Christian Bancale',
+      role: 'Advanced Technical  Development Engineer',
+      location: 'Cebu, Philippines',
+      image: 'https://media.licdn.com/dms/image/v2/D5603AQFRe6leU3PxBg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1671418106931?e=1756944000&v=beta&t=r7G3BTMx36p_scGb-95pmyOtXBg2kY-S_DWRdx7p52Y',
+      story: "Being part of Tecdia\'s manufacturing excellence team has taught me the importance of precision and quality in everything we do.",
     }
   ];
 
